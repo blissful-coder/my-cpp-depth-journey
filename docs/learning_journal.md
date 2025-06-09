@@ -5,10 +5,11 @@ This markdown tracker helps you log your progress as you work through the book *
 ## ✅ Progress Checklist
 
 - [ ] **Chapter 1 – Managing Threads**
-  - [ ] Read chapter
+  - [x] Read chapter
   - [ ] Completed exercises
   - [ ] Wrote code in `cpp_concurrency/chapter_01_threads/`
   - Notes:
+    - Basics of concurrency
 
 - [ ] **Chapter 2 – Sharing Data Between Threads**
   - [ ] Read chapter
