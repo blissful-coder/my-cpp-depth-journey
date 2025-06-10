@@ -10,6 +10,7 @@ This markdown tracker helps you log your progress as you work through the book *
   - [ ] Wrote code in `cpp_concurrency/chapter_01_threads/`
   - Notes:
     - Basics of concurrency
+    - Concurrency vs Parallism
 
 - [ ] **Chapter 2 – Sharing Data Between Threads**
   - [ ] Read chapter
