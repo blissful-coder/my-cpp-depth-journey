@@ -11,6 +11,7 @@ This markdown tracker helps you log your progress as you work through the book *
   - Notes:
     - Basics of concurrency
     - Concurrency vs Parallism
+    - First concurrent program
 
 - [ ] **Chapter 2 – Sharing Data Between Threads**
   - [ ] Read chapter
