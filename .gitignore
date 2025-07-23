@@ -12,6 +12,12 @@ cmake-build-*/
 *.gch
 *.pch
 
+# Executables without extension (common in Unix-like systems)
+playing/coding
+playing/coding_solution
+playing/a.out
+cpp_concurrency/*/a.out
+
 # IDE and editor files
 .idea/
 .vscode/
