@@ -1,40 +1,46 @@
-# Build artifacts
-build/
-cmake-build-*/
+# Compiled Object files
 *.o
-*.so
-*.a
-*.lib
-*.dll
-*.exe
 *.obj
-*.out
+
+# Precompiled Headers
 *.gch
 *.pch
 
-# Executables without extension (common in Unix-like systems)
-playing/coding
-playing/coding_solution
-playing/a.out
-cpp_concurrency/*/a.out
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
 
-# IDE and editor files
-.idea/
+# Compiled Static libraries
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+a.out
+*.aout
+
+# Build directories
+build/
+bin/
+obj/
+Debug/
+Release/
+
+# IDE specific files
 .vscode/
+.idea/
 *.swp
+*.swo
 *~
-.DS_Store
 
-# Test reports
-test_results/
-coverage/
+# CMake build files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
-# Dependencies managed by package managers (if any)
-conan_install/
-vcpkg_installed/
-
-# Logs
-*.log
-
-# Docker specific files
-.env
+# Dependency directories
+vendor/

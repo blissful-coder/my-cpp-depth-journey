@@ -27,34 +27,71 @@
 template<typename T>
 class ThreadSafeQueue {
 private:
-    // TODO: Add your private member variables here
+    // The underlying queue data structure
+    std::queue<T> data_queue;
+    
+    // Mutex to protect access to the queue
+    mutable std::mutex mutex;
+    
+    // Condition variable for waiting for data
+    std::condition_variable data_cond;
     
 public:
     ThreadSafeQueue() {
-        // TODO: Initialize your member variables if needed
+        // No additional initialization needed
     }
     
     // Add an element to the queue
     void push(T value) {
-        // TODO: Implement this method
+        // Lock the mutex to protect the queue
+        std::lock_guard<std::mutex> lock(mutex);
+        
+        // Add the value to the queue
+        data_queue.push(std::move(value));
+        
+        // Notify one waiting thread that data is available
+        data_cond.notify_one();
     }
     
     // Try to pop an element from the queue
     // Returns true if successful, false if queue was empty
     bool try_pop(T& value) {
-        // TODO: Implement this method
-        return false;
+        // Lock the mutex to protect the queue
+        std::lock_guard<std::mutex> lock(mutex);
+        
+        // Check if the queue is empty
+        if (data_queue.empty()) {
+            return false;
+        }
+        
+        // Get the value from the front of the queue
+        value = std::move(data_queue.front());
+        data_queue.pop();
+        
+        return true;
     }
     
     // Wait until an element is available and then pop it
     void wait_and_pop(T& value) {
-        // TODO: Implement this method
+        // Use a unique_lock since we need to unlock it in the wait
+        std::unique_lock<std::mutex> lock(mutex);
+        
+        // Wait until the queue is not empty
+        // This releases the lock while waiting and reacquires it when notified
+        data_cond.wait(lock, [this]{ return !data_queue.empty(); });
+        
+        // Get the value from the front of the queue
+        value = std::move(data_queue.front());
+        data_queue.pop();
     }
     
     // Check if the queue is empty
     bool empty() const {
-        // TODO: Implement this method
-        return true;
+        // Lock the mutex to protect the queue
+        std::lock_guard<std::mutex> lock(mutex);
+        
+        // Check if the queue is empty
+        return data_queue.empty();
     }
 };
 
